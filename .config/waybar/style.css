@@ -1,0 +1,121 @@
+@define-color text #b1c8ef;
+@define-color dwmwindowclass #9ece6a;
+
+* {
+    font-family: JetBrainsMono Nerd Font;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 0px;
+    min-height: 0px;
+}
+
+window#waybar {
+    background-color: rgba(21, 22, 30, 0.8);
+    color: @text;
+    opacity: 5;
+}
+
+#workspaces {
+background-color: transparent;
+}
+
+#workspaces button {
+padding: 0 5px;
+background-color: transparent;
+color: #c0caf5;
+/* border-color: #1a1b26; */
+}
+
+#workspaces button.active {
+background-color: rgba(125, 207, 255, 0.1);
+color: #7dcfff;
+/* border-color: #7dcfff; */
+}
+
+#workspaces button.urgent {
+background-color: #6bb2c0;
+color: #c0caf5;
+/* border-color: #6bb2c0; */
+}
+#workspaces button.persistent {
+	color: #313244;
+}
+/*
+#workspaces button.persistent
+#workspaces button.empty
+#workspaces button.active {
+background-color: #1a1b26;
+color: #7dcfff;
+  box-shadow: inherit;
+  text-shadow: inherit;
+ border-color: #6bb2c0;
+}
+*/
+#battery
+#tray,
+#mpris,
+#mpd,
+#disk,
+#mode,
+#network.speed {
+background-color: transparent;
+color: @text;
+margin: 1px;
+}
+
+
+.modules-left {
+    background-color: @transparent;
+    padding: 0px 0px 0px 0px;
+}
+
+#window {
+color: @dwmwindowclass;
+background-color: @transparent;
+padding-left: 4px;
+}
+
+.modules-right {
+    background-color: @transparent;
+    padding: 0px 0px 0px 0px;
+}
+
+#cpu {
+	color: #7dcfff;
+	margin: 1px;
+	padding-right: 8px;
+	padding-left: 8px;
+	border-right: 1px solid #b1c8ef;
+	border-left: 1px solid #b1c8ef;
+}
+
+#memory {
+	color: #bb9af7;
+	margin: 1px;
+	padding-right: 8px;
+	padding-left: 8px;
+	border-right: 1px solid #b1c8ef;
+}
+
+#wireplumber {
+	color: #9ece6a;
+	margin: 1px;
+	padding-right: 8px;
+	padding-left: 8px;
+	border-right: 1px solid #b1c8ef;
+}
+
+#battery {
+	color: #ee945f;
+	margin: 1px;
+	padding-right: 8px;
+	padding-left: 8px;
+	border-right: 1px solid #b1c8ef;
+}
+
+#clock {
+	color: #5499f6;
+	margin: 1px;
+	padding-right: 8px;
+	padding-left: 8px;
+}

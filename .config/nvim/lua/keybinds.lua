@@ -8,10 +8,12 @@ local normalModeKeymaps = {
 	['<C-b>'] = '<Cmd>ToggleTerm size=10 dir=~ direction=horizontal name=term<CR>',
 	['tt'] = '<Cmd>BufferNext<CR>',
 	['tr'] = '<Cmd>BufferPrevious<CR>',
+	['ff'] = '<cmd>lua vim.lsp.buf.format()<CR>',
 }
 
 vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
 vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
+vim.keymap.set('n', 'dd', '"_dd', { noremap = true })
 
 local insertModeKeymaps = {
 }

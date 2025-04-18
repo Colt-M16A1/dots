@@ -5,10 +5,8 @@ local util = require "lspconfig/util"
 
 -- LSP Languages
 require'lspconfig'.clangd.setup{}
---require'lspconfig'.lua_ls.setup{}
 require'lspconfig'.pyright.setup{}
 require'lspconfig'.gopls.setup{}
---require'lspconfig'.ccls.setup{}
 
 -- diagnostic symbols
 local signs = { Error = "", Warn = "", Hint = "󰌶", Info =  ""}
@@ -117,20 +115,24 @@ local glualint = {
 		}),
 }
 
-local glualint_formatting = {
-		method = null_ls.methods.FORMATTING,
-    filetypes = { "lua" },
-    generator = null_ls.generator({
-        command = "glualint",
-        args = { "pretty-print", "--stdin" },
-        to_stdin = true,
-    }),
-}
+
+--local glualint_formatting = {
+--		method = null_ls.methods.FORMATTING,
+--    filetypes = { "lua" },
+--    generator = null_ls.generator({
+--        command = "glualint",
+--        args = { "pretty-print", "--stdin" },
+--        to_stdin = true,
+--    }),
+--}
 
 null_ls.setup({
     update_in_insert = true,
     sources = {
         glualint,
-        glualint_formatting,
+        null_ls.builtins.formatting.stylua.with({
+            extra_args = { "--indent-width", "4", "--indent-type", "Spaces" },
+        }),
+--        glualint_formatting,
     },
 })

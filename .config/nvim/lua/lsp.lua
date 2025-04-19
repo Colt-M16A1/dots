@@ -7,6 +7,14 @@ local util = require "lspconfig/util"
 require'lspconfig'.clangd.setup{}
 require'lspconfig'.pyright.setup{}
 require'lspconfig'.gopls.setup{}
+require'lspconfig'.lua_ls.setup({
+  on_attach = function(client)
+  local fname = vim.api.nvim_buf_get_name(0)
+  if fname:match("garrysmod/") then
+    client.stop()
+  end
+end,})
+
 
 -- diagnostic symbols
 local signs = { Error = "", Warn = "", Hint = "󰌶", Info =  ""}

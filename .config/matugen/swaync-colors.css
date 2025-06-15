@@ -1,0 +1,13 @@
+@define-color cc-bg {{colors.surface.default.rgba | set_alpha: 0.8}};
+@define-color noti-border-color {{colors.primary.default.rgba | set_alpha: 0.8}};
+@define-color noti-bg {{colors.surface.default.rgba | set_alpha: 0.8}};
+@define-color noti-bg-opaque {{colors.surface.default.rgb}};
+@define-color noti-bg-darker {{colors.surface_dim.default.rgb}};
+@define-color noti-bg-hover {{colors.surface_bright.default.rgb}};
+@define-color noti-bg-hover-opaque {{colors.surface_bright.default.rgb}};
+@define-color noti-bg-focus {{colors.surface_tint.default.rgba | set_alpha: 0.6}};
+@define-color noti-close-bg {{colors.surface_container_low.default.rgba | set_alpha: 0.1}};
+@define-color noti-close-bg-hover {{colors.surface_container_low.default.rgba | set_alpha: 0.15}};
+@define-color text-color {{colors.on_surface.default.rgb}};
+@define-color text-color-disabled {{colors.surface_container_lowest.default.rgb}};
+@define-color bg-selected {{colors.primary.default.rgb}};

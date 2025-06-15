@@ -1,0 +1,10 @@
+/*
+* Css Colors
+* Generated with Matugen
+*/
+<* for name, value in colors *>
+    @define-color {{name}} {{value.default.hex}};
+<* endfor *>
+		@define-color backgroundtransparent {{colors.background.default.rgba | set_alpha: 0.8}};
+		@define-color on_secondary_fixed_varianta {{colors.on_secondary_fixed_variant.default.rgba | set_alpha: 0.5}};
+

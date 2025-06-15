@@ -1,0 +1,41 @@
+[general]
+ipc_socket = true
+
+import = [
+"~/.cache/alacritty_colors.toml",
+]
+
+[window]
+dynamic_padding = true
+opacity = 0.95
+title = "alacritty"
+startup_mode = "Windowed"
+
+[window.class]
+general = "Alacritty"
+instance = "Alacritty"
+
+[window.padding]
+x = 0
+y = 0
+
+[env]
+TERM = "xterm-256color"
+
+[font]
+size = 13.6
+normal      = { family = "BlexMono Nerd Font Mono", style = "Regular" }
+bold        = { family = "BlexMono Nerd Font Mono", style = "Bold" }
+italic      = { family = "BlexMono Nerd Font Mono", style = "Italic" }
+bold_italic = { family = "BlexMono Nerd Font Mono", style = "Bold Italic" }
+
+[font.offset]
+x = 0
+y = 0
+
+[scrolling]
+history = 5000
+multiplier = 3
+
+[selection]
+save_to_clipboard = true

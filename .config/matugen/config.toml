@@ -1,0 +1,30 @@
+[config]
+version_check = false
+
+[config.wallpaper]
+command = "swww"
+arguments = ["img", "--transition-type", "center"]
+set = true
+
+[templates.hyprland]
+input_path = '~/.config/matugen/hyprland-colors.conf'
+output_path = '~/.cache/hypr_colors.conf'
+post_hook = 'hyprctl reload'
+
+[templates.alacritty]
+input_path = '~/.config/matugen/alacritty.toml'
+output_path = '~/.cache/alacritty_colors.toml'
+
+[templates.rofi]
+input_path = '~/.config/matugen/rofi-colors.rasi'
+output_path = '~/.config/rofi/colors.rasi'
+
+[templates.waybar]
+input_path = '~/.config/matugen/waybar-colors.css'
+output_path = '~/.config/waybar/colors.css'
+post_hook = 'killall -SIGUSR2 waybar'
+
+[templates.dunst]
+input_path = '~/.config/matugen/dunstrc-colors'
+output_path = '~/.config/dunst/dunstrc'
+post_hook = 'dunstctl reload'

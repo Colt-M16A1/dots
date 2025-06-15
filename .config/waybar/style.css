@@ -1,3 +1,5 @@
+@import "colors.css";
+
 @define-color text #b1c8ef;
 @define-color dwmwindowclass #9ece6a;
 
@@ -6,12 +8,13 @@
     font-size: 14px;
     font-weight: bold;
     border-radius: 0px;
+    /* :[ */
     min-height: 0px;
 }
 
 window#waybar {
-    background-color: rgba(21, 22, 30, 0.8);
-    color: @text;
+    background-color: @backgroundtransparent;
+    color: @primary;
     opacity: 5;
 }
 
@@ -22,35 +25,34 @@ background-color: transparent;
 #workspaces button {
 padding: 0 5px;
 background-color: transparent;
-color: #c0caf5;
+color: @on_surface;
 /* border-color: #1a1b26; */
 }
 
 #workspaces button.active {
-background-color: rgba(125, 207, 255, 0.1);
-color: #7dcfff;
+background-color: @on_secondary_fixed_varianta;
+color: @on_secondary_container;
 /* border-color: #7dcfff; */
 }
 
 #workspaces button.urgent {
-background-color: #6bb2c0;
-color: #c0caf5;
+background-color: @inverse_on_surface;
+color: @error;
 /* border-color: #6bb2c0; */
 }
 #workspaces button.persistent {
-	color: #313244;
+	color: @on_primary;
 }
-/*
 #workspaces button.persistent
 #workspaces button.empty
 #workspaces button.active {
-background-color: #1a1b26;
-color: #7dcfff;
+background-color: @inverse_on_surface;
+color: @primary;
   box-shadow: inherit;
   text-shadow: inherit;
- border-color: #6bb2c0;
+	/* border-color: #6bb2c0; */
 }
-*/
+
 #battery
 #tray,
 #mpris,
@@ -59,7 +61,7 @@ color: #7dcfff;
 #mode,
 #network.speed {
 background-color: transparent;
-color: @text;
+color: @on_surface;
 margin: 1px;
 }
 
@@ -70,7 +72,7 @@ margin: 1px;
 }
 
 #window {
-color: @dwmwindowclass;
+color: @primary;
 background-color: @transparent;
 padding-left: 4px;
 }
@@ -81,7 +83,7 @@ padding-left: 4px;
 }
 
 #cpu {
-	color: #7dcfff;
+	color: @on_tertiary_container;
 	margin: 1px;
 	padding-right: 8px;
 	padding-left: 8px;
@@ -90,7 +92,7 @@ padding-left: 4px;
 }
 
 #memory {
-	color: #bb9af7;
+	color: @primary_fixed;
 	margin: 1px;
 	padding-right: 8px;
 	padding-left: 8px;
@@ -98,7 +100,7 @@ padding-left: 4px;
 }
 
 #wireplumber {
-	color: #9ece6a;
+	color: @on_error_container;
 	margin: 1px;
 	padding-right: 8px;
 	padding-left: 8px;
@@ -106,7 +108,7 @@ padding-left: 4px;
 }
 
 #battery {
-	color: #ee945f;
+	color: @on_tertiary_fixed_variant;
 	margin: 1px;
 	padding-right: 8px;
 	padding-left: 8px;
@@ -114,8 +116,10 @@ padding-left: 4px;
 }
 
 #clock {
-	color: #5499f6;
+	color: @on_secondary_container;
 	margin: 1px;
 	padding-right: 8px;
 	padding-left: 8px;
+	border-right: 1px solid #b1c8ef;
 }
+

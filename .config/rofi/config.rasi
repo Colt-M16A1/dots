@@ -1,0 +1,12 @@
+configuration {
+  show-icons:      true;
+  icon-theme:      "Papirus";
+  cycle:           true;
+  disable-history: false;
+  monitor:         "-4";
+  modi:            "drun";
+  display-drun:    " ";
+}
+
+@theme "~/.config/rofi/themes/spotlight-dark-matugen.rasi"
+

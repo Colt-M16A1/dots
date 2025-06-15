@@ -15,9 +15,9 @@ post_hook = 'hyprctl reload'
 input_path = '~/.config/matugen/alacritty.toml'
 output_path = '~/.cache/alacritty_colors.toml'
 
-[templates.rofi]
-input_path = '~/.config/matugen/rofi-colors.rasi'
-output_path = '~/.config/rofi/colors.rasi'
+[templates.rofi-spotlight]
+input_path = '~/.config/matugen/rofi-spotlight.rasi'
+output_path = '~/.config/rofi/themes/spotlight-dark-matugen.rasi'
 
 [templates.waybar]
 input_path = '~/.config/matugen/waybar-colors.css'

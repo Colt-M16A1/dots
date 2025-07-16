@@ -6,12 +6,25 @@ local util = require "lspconfig/util"
 -- LSP Languages
 require'lspconfig'.clangd.setup{}
 require'lspconfig'.pyright.setup{}
+require'lspconfig'.rust_analyzer.setup{}
 require'lspconfig'.gopls.setup{}
 require'lspconfig'.lua_ls.setup({
   on_attach = function(client)
   local fname = vim.api.nvim_buf_get_name(0)
   if fname:match("garrysmod/") then
-    client.stop()
+        client.server_capabilities.hoverProvider = false
+        client.server_capabilities.completionProvider = nil
+        client.server_capabilities.definitionProvider = false
+        client.server_capabilities.referencesProvider = false
+        client.server_capabilities.documentSymbolProvider = false
+        client.server_capabilities.workspaceSymbolProvider = false
+        client.server_capabilities.codeActionProvider = false
+        client.server_capabilities.signatureHelpProvider = nil
+        client.server_capabilities.renameProvider = false
+        client.server_capabilities.documentHighlightProvider = false
+        client.server_capabilities.semanticTokensProvider = nil
+        client.handlers["textDocument/publishDiagnostics"] = function() end
+    --client.stop()
   end
 end,})
 

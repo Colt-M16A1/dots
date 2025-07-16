@@ -4,7 +4,6 @@
     "height": 0,
     "modules-left": [
         "hyprland/workspaces",
-//        "mpris",
         "mpd"
     ],
     "modules-center": [
@@ -17,18 +16,14 @@
         "memory",
         "wireplumber",
         "battery",
-//        "disk",
-        "clock"
-//				"custom/notification"
-//        "pulseaudio#microphone"
+        "clock",
+				"custom/notification"
     ],
 
     "hyprland/window": {
-//				"icon": true,
-//				"icon-size": 18,
-//        "format": "{class}",
     },
-    "hyprland/workspaces": {
+
+		"hyprland/workspaces": {
         "disable-scroll": true,
         "on-click": "activate",
         "format": "{icon}",
@@ -52,26 +47,6 @@
 					"28": "8",
 					"29": "9",
 				}
-//			"persistent-workspaces": {
-//			"11": ["LVDS-1"],
-//			"12": ["LVDS-1"],
-//			"13": ["LVDS-1"],
-//			"14": ["LVDS-1"],
-//			"15": ["LVDS-1"],
-//			"16": ["LVDS-1"],
-//			"17": ["LVDS-1"],
-//			"18": ["LVDS-1"],
-//			"19": ["LVDS-1"],
-//			}
-    },
-    "mpris": {
-        "format": "{player_icon} {artist} - {title}",
-        "player-icons": {
-            "default": "▶",
-        },
-        "status-icons": {
-            "paused": ""
-        },
     },
     "mpd": {
     	"format": " {stateIcon} {artist} - {title}",

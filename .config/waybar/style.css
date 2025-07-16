@@ -1,14 +1,10 @@
 @import "colors.css";
 
-@define-color text #b1c8ef;
-@define-color dwmwindowclass #9ece6a;
-
 * {
     font-family: JetBrainsMono Nerd Font;
     font-size: 14px;
     font-weight: bold;
     border-radius: 0px;
-    /* :[ */
     min-height: 0px;
 }
 
@@ -26,20 +22,18 @@ background-color: transparent;
 padding: 0 5px;
 background-color: transparent;
 color: @on_surface;
-/* border-color: #1a1b26; */
 }
 
 #workspaces button.active {
 background-color: @on_secondary_fixed_varianta;
 color: @on_secondary_container;
-/* border-color: #7dcfff; */
 }
 
 #workspaces button.urgent {
 background-color: @inverse_on_surface;
 color: @error;
-/* border-color: #6bb2c0; */
 }
+
 #workspaces button.persistent {
 	color: @on_primary;
 }
@@ -50,7 +44,6 @@ background-color: @inverse_on_surface;
 color: @primary;
   box-shadow: inherit;
   text-shadow: inherit;
-	/* border-color: #6bb2c0; */
 }
 
 #battery
@@ -87,8 +80,8 @@ padding-left: 4px;
 	margin: 1px;
 	padding-right: 8px;
 	padding-left: 8px;
-	border-right: 1px solid #b1c8ef;
-	border-left: 1px solid #b1c8ef;
+	border-right: 1px solid @on_background;
+	border-left: 1px solid @on_background;
 }
 
 #memory {
@@ -96,7 +89,7 @@ padding-left: 4px;
 	margin: 1px;
 	padding-right: 8px;
 	padding-left: 8px;
-	border-right: 1px solid #b1c8ef;
+	border-right: 1px solid @on_background;
 }
 
 #wireplumber {
@@ -104,15 +97,15 @@ padding-left: 4px;
 	margin: 1px;
 	padding-right: 8px;
 	padding-left: 8px;
-	border-right: 1px solid #b1c8ef;
+	border-right: 1px solid @on_background;
 }
 
 #battery {
-	color: @on_tertiary_fixed_variant;
+	color: @on_primary_container;
 	margin: 1px;
 	padding-right: 8px;
 	padding-left: 8px;
-	border-right: 1px solid #b1c8ef;
+	border-right: 1px solid @on_background;
 }
 
 #clock {
@@ -120,6 +113,5 @@ padding-left: 4px;
 	margin: 1px;
 	padding-right: 8px;
 	padding-left: 8px;
-	border-right: 1px solid #b1c8ef;
+	border-right: 1px solid @on_background;
 }
-

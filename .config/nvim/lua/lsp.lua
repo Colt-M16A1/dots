@@ -4,30 +4,42 @@ require("mason-lspconfig").setup()
 local util = require "lspconfig/util"
 
 -- LSP Languages
-require'lspconfig'.clangd.setup{}
-require'lspconfig'.pyright.setup{}
-require'lspconfig'.rust_analyzer.setup{}
-require'lspconfig'.gopls.setup{}
-require'lspconfig'.lua_ls.setup({
-  on_attach = function(client)
-  local fname = vim.api.nvim_buf_get_name(0)
-  if fname:match("garrysmod/") then
-        client.server_capabilities.hoverProvider = false
-        client.server_capabilities.completionProvider = nil
-        client.server_capabilities.definitionProvider = false
-        client.server_capabilities.referencesProvider = false
-        client.server_capabilities.documentSymbolProvider = false
-        client.server_capabilities.workspaceSymbolProvider = false
-        client.server_capabilities.codeActionProvider = false
-        client.server_capabilities.signatureHelpProvider = nil
-        client.server_capabilities.renameProvider = false
-        client.server_capabilities.documentHighlightProvider = false
-        client.server_capabilities.semanticTokensProvider = nil
-        client.handlers["textDocument/publishDiagnostics"] = function() end
-    --client.stop()
-  end
-end,})
+vim.lsp.enable('clangd')
+vim.lsp.enable('rust_analyzer')
+vim.lsp.enable('gopls')
+vim.lsp.enable('lua_ls')
+vim.lsp.enable('pyright')
 
+
+vim.api.nvim_create_autocmd('LspAttach', {
+  callback = function(ev)
+    local client = vim.lsp.get_client_by_id(ev.data.client_id)
+    if not client or client.name ~= 'lua_ls' then
+      return
+    end
+
+    local fname = vim.api.nvim_buf_get_name(ev.buf)
+    if not fname:match('garrysmod/') then
+      return
+    end
+
+    client.server_capabilities.hoverProvider = false
+    client.server_capabilities.completionProvider = nil
+    client.server_capabilities.definitionProvider = false
+    client.server_capabilities.referencesProvider = false
+    client.server_capabilities.documentSymbolProvider = false
+    client.server_capabilities.workspaceSymbolProvider = false
+    client.server_capabilities.codeActionProvider = false
+    client.server_capabilities.signatureHelpProvider = nil
+    client.server_capabilities.renameProvider = false
+    client.server_capabilities.documentHighlightProvider = false
+    client.server_capabilities.semanticTokensProvider = nil
+
+    client.handlers['textDocument/publishDiagnostics'] = function() end
+
+    -- client.stop()
+  end,
+})
 
 -- diagnostic symbols
 local signs = { Error = "", Warn = "", Hint = "󰌶", Info =  ""}

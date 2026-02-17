@@ -2,9 +2,9 @@
 version_check = false
 
 [config.wallpaper]
-command = "swww"
-arguments = ["img", "--transition-type", "center"]
-set = true
+command = 'awww img {{ image }}'
+#arguments = ["img", "--transition-type", "center", "--source-color-index", "1"]
+set = false
 
 [templates.hyprland]
 input_path = '~/.config/matugen/templates/hyprland-colors.conf'
@@ -18,7 +18,7 @@ output_path = '~/.cache/alacritty_colors.toml'
 [templates.foot]
 input_path = '~/.config/matugen/templates/foot.ini'
 output_path = '~/.cache/foot_colors.ini'
-post_hook = 'killall foot && sleep 1 && exec foot -s &'
+post_hook = 'killall foot; sleep 0.5; foot -s &'
 
 [templates.rofi-spotlight]
 input_path = '~/.config/matugen/templates/rofi-spotlight.rasi'

@@ -3,7 +3,7 @@ version_check = false
 
 [config.wallpaper]
 command = 'awww img {{ image }}'
-#arguments = ["img", "--transition-type", "center", "--source-color-index", "1"]
+#arguments = ["img", "--transition-type", "center"]
 set = false
 
 [templates.hyprland]
@@ -46,3 +46,8 @@ output_path = '~/.config/gtk-3.0/gtk.css'
 [templates.gtk4]
 input_path = '~/.config/matugen/templates/gtk-colors.css'
 output_path = '~/.config/gtk-4.0/gtk.css'
+
+[templates.vicinae]
+input_path = './templates/vicinae.toml'
+output_path = '~/.local/share/vicinae/themes/matugen.toml'
+post_hook = 'vicinae theme set matugen'

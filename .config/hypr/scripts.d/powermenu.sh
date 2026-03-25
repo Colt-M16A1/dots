@@ -13,7 +13,7 @@ case $op in
                 loginctl $op
                 ;;
         lock)
-		hyprlock
+								hyprlock
                 ;;
         logout)
                 hyprctl dispatch exit

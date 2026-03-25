@@ -21,6 +21,9 @@
     ],
 
     "hyprland/window": {
+    	"icon": true,
+    	"icon-size": 20,
+    	"max-length": 100
     },
 
 		"hyprland/workspaces": {
@@ -109,7 +112,7 @@
         "format": "{icon} {usage:2}%",
         "format-icons": [""],
         "interval": 3,
-        "on-click": "alacritty msg create-window -e btop"
+        "on-click": "footclient -e btop"
     },
     "memory": {
         "format": "{icon} {percentage:3}%",
@@ -126,7 +129,7 @@
         "format": "{icon} {volume}%",
         "tooltip": false,
         "format-muted": " Muted",
-        "on-click": "alacritty msg create-window -e pulsemixer",
+        "on-click": "footclient -e pulsemixer",
         "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
         "on-scroll-up": "wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 2%+",
         "on-scroll-down": "wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 2%-",

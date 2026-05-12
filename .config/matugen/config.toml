@@ -8,7 +8,7 @@ set = false
 
 [templates.hyprland]
 input_path = '~/.config/matugen/templates/hyprland-colors.conf'
-output_path = '~/.cache/hypr_colors.conf'
+output_path = '~/.config/hypr/config/colors.lua'
 post_hook = 'hyprctl reload'
 
 [templates.alacritty]

@@ -1,3 +1,5 @@
+#!/bin/bash
+
 option=$1
 
 if [ "$option" == "add" ]; then

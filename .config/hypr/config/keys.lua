@@ -55,30 +55,32 @@ hl.bind("SHIFT + INSERT", hl.dsp.exec_cmd("flatpak run org.equicord.equibop --to
 --XF86
 hl.bind(
     "XF86AudioRaiseVolume",
-    hl.dsp.exec_cmd("wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%+"),
+    hl.dsp.exec_cmd("swayosd-client --output-volume raise"),
     { locked = true, repeating = true }
 )
 hl.bind(
     "XF86AudioLowerVolume",
-    hl.dsp.exec_cmd("wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%-"),
+    hl.dsp.exec_cmd("swayosd-client --output-volume lower"),
     { locked = true, repeating = true }
 )
 hl.bind(
     "XF86AudioMute",
-    hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"),
+    hl.dsp.exec_cmd("swayosd-client --output-volume mute-toggle"),
     { locked = true, repeating = true }
 )
+hl.bind(
+    "XF86AudioMicMute",
+    hl.dsp.exec_cmd("swayosd-client --input-volume mute-toggle"),
+    { locked = true, repeating = true }
+)
+hl.bind("CAPS + Caps_Lock", hl.dsp.exec_cmd("swayosd-client --caps-lock"), { locked = true, repeating = true })
+
 hl.bind("XF86AudioMedia", hl.dsp.exec_cmd(Music))
 hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true, repeating = true })
 hl.bind("XF86AudioNext", hl.dsp.exec_cmd("playerctl next"), { locked = true, repeating = true })
 hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"), { locked = true, repeating = true })
-hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("xbacklight -inc 5"), { locked = true, repeating = true })
-hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("xbacklight -dec 5"), { locked = true, repeating = true })
-hl.bind(
-    "XF86AudioRaiseVolume",
-    hl.dsp.exec_cmd("wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%+"),
-    { locked = true, repeating = true }
-)
+hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("swayosd-client --brightness +3"), { locked = true, repeating = true })
+hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("swayosd-client --brightness -3"), { locked = true, repeating = true })
 hl.bind("XF86Calculator", hl.dsp.exec_cmd("rofi -show calc -modi calc -no-show-match -no-sort"))
 hl.bind("XF86WWW", hl.dsp.exec_cmd(Browser))
 hl.bind("XF86HomePage", hl.dsp.exec_cmd("tor-browser"))
@@ -151,18 +153,36 @@ hl.bind(mod .. " + B", hl.dsp.workspace.toggle_special())
 hl.bind(mod .. " + P", hl.dsp.window.pseudo())
 
 -- zoom
-hl.bind(
-    mod .. " + CTRL + mouse_down",
-    hl.dsp.exec_cmd(
-        "hyprctl -q keyword cursor:zoom_factor $(hyprctl getoption cursor:zoom_factor -j | jq '.float * 1.4')"
-    ),
-    { mouse = true }
-)
-hl.bind(
-    mod .. " + CTRL + mouse_up",
-    hl.dsp.exec_cmd(
-        "hyprctl -q keyword cursor:zoom_factor $(hyprctl getoption cursor:zoom_factor -j | jq '(.float * 0.7) | if . < 1 then 1 else . end')"
-    ),
-    { mouse = true }
-)
-hl.bind(mod .. " + CTRL + mouse:274", hl.dsp.exec_cmd("hyprctl -q keyword cursor:zoom_factor 1"), { mouse = true })
+local function zoomfunction(value)
+    local zoomvalue = hl.get_config("cursor:zoom_factor")
+    if (zoomvalue + value) < 1.0 then
+        hl.config({ cursor = { zoom_factor = 1.0 } })
+    else
+        hl.config({ cursor = { zoom_factor = zoomvalue + value } })
+    end
+end
+
+hl.bind(mod .. " + CTRL + mouse_down", function()
+    zoomfunction(0.7)
+end)
+hl.bind(mod .. " + CTRL + mouse_up", function()
+    zoomfunction(-0.7)
+end)
+hl.bind(mod .. " + CTRL + mouse:274", function()
+    hl.config({ cursor = { zoom_factor = 1.0 } })
+end, { mouse = true })
+
+hl.bind(mod .. " + Minus", function()
+    zoomfunction(-0.3)
+end, { repeating = true })
+hl.bind(mod .. " + Equal", function()
+    zoomfunction(0.3)
+end, { repeating = true })
+
+--# Zoom with keypad
+hl.bind(mod .. " + code:82", function()
+    zoomfunction(-0.3)
+end, { repeating = true })
+hl.bind(mod .. " + code:86", function()
+    zoomfunction(0.3)
+end, { repeating = true })

@@ -11,6 +11,10 @@ input_path = '~/.config/matugen/templates/hyprland-colors.conf'
 output_path = '~/.config/hypr/config/colors.lua'
 post_hook = 'hyprctl reload'
 
+[templates.hypr]
+input_path = '~/.config/matugen/templates/hypr-colors.conf'
+output_path = '~/.cache/hypr_colors.conf'
+
 [templates.alacritty]
 input_path = '~/.config/matugen/templates/alacritty.toml'
 output_path = '~/.cache/alacritty_colors.toml'

@@ -45,16 +45,7 @@ hl.config({
     },
     cursor = {
         inactive_timeout = 5,
-        default_monitor = "DP-1",
         zoom_disable_aa = true,
-    },
-    render = {
-        --pc
-        direct_scanout = 0,
-        cm_enabled = false,
-        --laptop
-        --direct_scanout = 2,
-        --new_render_scheduling = true,
     },
     misc = {
         mouse_move_enables_dpms = true,
@@ -68,7 +59,6 @@ hl.config({
         swallow_exception_regex = "^(.*)(Blender)(.*)",
         enable_anr_dialog = false,
         font_family = "BlexMono Nerd Font Mono",
-        vrr = 2,
     },
     plugin = {
         split_monitor_workspaces = {
@@ -87,8 +77,43 @@ hl.config({
     },
 })
 
+local function isIntelGPU()
+    local handle = io.popen("lspci | grep -i vga")
+    if handle == nil then
+        return nil
+    end
+    local result = handle:read("*a"):lower()
+    handle:close()
+
+    return result:find("intel") ~= nil
+end
+
+Laptop = isIntelGPU()
+
 local smw = hl.plugin.split_monitor_workspaces
-smw.monitor_priority({ "DP-1", "HDMI-A-1" })
+
+if Laptop then
+    hl.config({
+        render = {
+            direct_scanout = 2,
+            new_render_scheduling = true,
+        },
+    })
+    smw.monitor_priority({ "LVDS-1" })
+else
+    hl.config({
+        render = {
+            direct_scanout = 0, -- TF2 black screen??
+        },
+        misc = {
+            vrr = 2,
+        },
+        cursor = {
+            default_monitor = "DP-1",
+        },
+    })
+    smw.monitor_priority({ "DP-1", "HDMI-A-1" })
+end
 
 hl.curve("specialWorkSwitch", { type = "bezier", points = { { 0.05, 0.7 }, { 0.1, 1 } } })
 hl.curve("emphasizedAccel", { type = "bezier", points = { { 0.3, 0 }, { 0.8, 0.15 } } })

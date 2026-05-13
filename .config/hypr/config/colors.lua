@@ -1,4 +1,3 @@
-Wallpaper = "/home/vepley/Pictures/wallpapers/bmp-2.png"
 
 Col_background = "rgba(101417ff)"
 

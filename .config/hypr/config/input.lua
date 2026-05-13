@@ -5,6 +5,10 @@ hl.config({
         accel_profile = "flat",
         force_no_accel = false,
         numlock_by_default = true,
-        sensitivity = -0.88,
     },
+})
+
+hl.device({
+    name = "razer-razer-cobra",
+    sensitivity = -0.88,
 })

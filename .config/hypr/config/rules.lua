@@ -107,6 +107,10 @@ hl.layer_rule({
     blur = true,
 })
 hl.layer_rule({
+    match = { namespace = "swayosd" },
+    blur = true,
+})
+hl.layer_rule({
     match = { namespace = "swaync-control-center" },
     blur = true,
     no_screen_share = true,
